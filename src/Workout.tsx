@@ -3,10 +3,12 @@ import { ExcerciseProgression } from "./excercises";
 import { Galleria } from "primereact/galleria";
 import { Card } from "primereact/card";
 import { InputNumber } from "primereact/inputnumber";
+import { Button } from "primereact/button";
 
 type Props = {
   progression: ExcerciseProgression;
   progressionNumber: number;
+  progressionMax: number;
   base: string;
   onProgressionChange: (value: number) => void;
 };
@@ -15,6 +17,7 @@ export default function Workout({
   progression,
   base,
   progressionNumber,
+  progressionMax,
   onProgressionChange
 }: Props) {
   return (
@@ -53,21 +56,25 @@ export default function Workout({
         </div>
         <div className="p-sm-6">
           <div className="p-text-bold p-mb-2">Progression</div>
-          <InputNumber
-            readOnly
-            value={progressionNumber}
-            onValueChange={(e) => onProgressionChange(e.value)}
-            mode="decimal"
-            showButtons
-            buttonLayout="horizontal"
-            inputStyle={{ width: "2.5em" }}
-            decrementButtonClassName="p-button-secondary"
-            incrementButtonClassName="p-button-secondary"
-            incrementButtonIcon="pi pi-plus"
-            decrementButtonIcon="pi pi-minus"
-            min={1}
-            max={10}
-          />
+          <div className="p-d-flex p-buttonset">
+            <Button
+              icon="pi pi-minus"
+              className="p-button-outlined"
+              disabled={progressionNumber <= 1}
+              onClick={() => onProgressionChange(progressionNumber - 1)}
+            />
+            <Button
+              label={`${progressionNumber}`}
+              readOnly
+              className="p-button-secondary p-button-outlined"
+            />
+            <Button
+              icon="pi pi-plus"
+              className="p-button-outlined"
+              disabled={progressionNumber >= progressionMax}
+              onClick={() => onProgressionChange(progressionNumber + 1)}
+            />
+          </div>
         </div>
       </div>
     </Card>

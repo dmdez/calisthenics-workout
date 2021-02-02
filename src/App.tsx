@@ -74,17 +74,19 @@ export default function App() {
       <div className="p-grid p-mt-2">
         {todaysWorkout &&
           todaysWorkout.workouts.map((workoutName) => {
-            const currentProgressions = progressions[workoutName] || 1;
+            const currentProgressionNumber = progressions[workoutName] || 1;
+            const totalProgressions = lookup[workoutName].progression;
             const progression =
-              lookup[workoutName].progression[currentProgressions - 1 || 0];
+              totalProgressions[currentProgressionNumber - 1 || 0];
             return (
               <div className="p-col-6" key={workoutName}>
                 <Workout
+                  progressionMax={totalProgressions.length}
                   onProgressionChange={(value) =>
                     updateProgression(workoutName, value)
                   }
                   base={workoutName}
-                  progressionNumber={currentProgressions}
+                  progressionNumber={currentProgressionNumber}
                   progression={progression}
                 />
               </div>
