@@ -4,10 +4,9 @@ import { Column } from "primereact/column";
 import { Dropdown } from "primereact/dropdown";
 import { excercises, Excercise, DAYS } from "./excercises";
 import { useStatePersist as useState } from "use-state-persist";
-import { Button } from "primereact/button";
+import { TabMenu } from "primereact/tabmenu";
 import { OverlayPanel } from "primereact/overlaypanel";
 import Workout from "./Workout";
-import { Toolbar } from "primereact/toolbar";
 import { range } from "lodash";
 
 // import "primereact/resources/themes/saga-blue/theme.css";
@@ -27,6 +26,7 @@ export default function App() {
     "progressions",
     {}
   );
+  const daysModel = DAYS.map(({ name }) => ({ label: name }));
   const lookup = excercises.reduce<{ [key: string]: Excercise }>(
     (acc, curr) => {
       acc[curr.name] = curr;
@@ -43,28 +43,10 @@ export default function App() {
 
   return (
     <div className="App">
-      <Toolbar
-        left={() => (
-          <Dropdown
-            optionLabel="name"
-            optionValue="name"
-            value={dow}
-            options={DAYS}
-            onChange={(e) => setDow(e.value)}
-            placeholder="DOW"
-          />
-        )}
-        right={() => (
-          <Button
-            type="button"
-            icon="pi pi-ellipsis-v"
-            onClick={(e) => {
-              if (op && op.current) {
-                op.current.toggle(e);
-              }
-            }}
-          />
-        )}
+      <TabMenu
+        model={daysModel}
+        activeItem={daysModel.find((d) => d.label === dow)}
+        onTabChange={(e) => setDow(e.value.label)}
       />
 
       <OverlayPanel ref={op}>
@@ -91,22 +73,31 @@ export default function App() {
 
       <div className="p-grid p-mt-2">
         {todaysWorkout &&
-          todaysWorkout.workouts.map((workoutName) => (
-            <div className="p-col-6" key={workoutName}>
-              <Workout
-                onProgressionChange={(value) =>
-                  updateProgression(workoutName, value)
-                }
-                base={workoutName}
-                progressionNumber={progressions[workoutName]}
-                progression={
-                  lookup[workoutName].progression[
-                    progressions[workoutName] - 1 || 0
-                  ]
-                }
-              />
-            </div>
-          ))}
+          todaysWorkout.workouts.map((workoutName) => {
+            const currentProgressions = progressions[workoutName] || 1;
+            const progression =
+              lookup[workoutName].progression[currentProgressions - 1 || 0];
+            return (
+              <div className="p-col-6" key={workoutName}>
+                <Workout
+                  onProgressionChange={(value) =>
+                    updateProgression(workoutName, value)
+                  }
+                  base={workoutName}
+                  progressionNumber={currentProgressions}
+                  progression={progression}
+                />
+              </div>
+            );
+          })}
+      </div>
+      <div className="p-mt-2 p-mb-6 p-component">
+        <div className="p-text-italic">
+          Source:{" "}
+          <a href="https://www.hybridcalisthenics.com/routine">
+            Hybrid Calisthenics
+          </a>
+        </div>
       </div>
     </div>
   );

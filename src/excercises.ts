@@ -14,31 +14,31 @@ export type ExcerciseProgression = {
 
 export const DAYS = [
   {
-    name: "SUN",
+    name: "Su",
     workouts: []
   },
   {
-    name: "MON",
+    name: "M",
     workouts: ["Pushups", "Leg Raises", "Pullups"]
   },
   {
-    name: "TUE",
+    name: "T",
     workouts: ["Bridges"]
   },
   {
-    name: "WED",
+    name: "W",
     workouts: ["Pushups", "Squats", "Pullups"]
   },
   {
-    name: "THU",
+    name: "Th",
     workouts: ["Leg Raises"]
   },
   {
-    name: "FRI",
+    name: "F",
     workouts: ["Bridges", "Squats"]
   },
   {
-    name: "SAT",
+    name: "Sa",
     workouts: []
   }
 ];

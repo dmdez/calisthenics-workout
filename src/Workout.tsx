@@ -32,23 +32,30 @@ export default function Workout({
             <img src={s} alt="" style={{ width: "100%", display: "block" }} />
           )}
           value={progression.images}
+          caption={() => (
+            <React.Fragment>
+              <small>
+                <span style={{ opacity: 0.6 }}>{base}</span> /{" "}
+                {progression.name}
+              </small>
+            </React.Fragment>
+          )}
         />
       )}
-      title={progression.name}
-      subTitle={base}
     >
       <div className="p-grid">
-        <div className="p-col-3">
+        <div className="p-col-6 p-sm-3">
           <div className="p-text-bold p-mb-2">{progression.reps}</div>
           <div className="p-text-light">Reps</div>
         </div>
-        <div className="p-col-3">
+        <div className="p-col-6 p-sm-3">
           <div className="p-text-bold p-mb-2">{progression.sets}</div>
           <div className="p-text-light">Sets</div>
         </div>
-        <div className="p-col-6">
+        <div className="p-sm-6">
           <div className="p-text-bold p-mb-2">Progression</div>
           <InputNumber
+            readOnly
             value={progressionNumber}
             onValueChange={(e) => onProgressionChange(e.value)}
             mode="decimal"
@@ -64,10 +71,6 @@ export default function Workout({
           />
         </div>
       </div>
-
-      {/* {progression.images.map((src) => {
-        return <img src={src} alt={progression.name} width={150} />;
-      })} */}
     </Card>
   );
 }
