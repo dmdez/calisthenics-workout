@@ -35,6 +35,11 @@ export default function App() {
     {}
   );
   const todaysWorkout = DAYS.find((d) => d.name === dow);
+  const updateProgression = (name: string, value: number) =>
+    setProgressions({
+      ...progressions,
+      [name]: value
+    });
 
   return (
     <div className="App">
@@ -76,13 +81,7 @@ export default function App() {
                 options={range(props.rowData.progression.length).map(
                   (x: number) => x + 1
                 )}
-                onChange={(e) => {
-                  console.log(e.value);
-                  setProgressions({
-                    ...progressions,
-                    [props.rowData.name]: e.value
-                  });
-                }}
+                onChange={(e) => updateProgression(props.rowData.name, e.value)}
               />
             )}
             header="Progression"
@@ -92,11 +91,19 @@ export default function App() {
 
       <div className="p-grid p-mt-2">
         {todaysWorkout &&
-          todaysWorkout.workouts.map((w) => (
-            <div className="p-col-6" key={w}>
+          todaysWorkout.workouts.map((workoutName) => (
+            <div className="p-col-6" key={workoutName}>
               <Workout
-                base={w}
-                progression={lookup[w].progression[progressions[w] - 1 || 0]}
+                onProgressionChange={(value) =>
+                  updateProgression(workoutName, value)
+                }
+                base={workoutName}
+                progressionNumber={progressions[workoutName]}
+                progression={
+                  lookup[workoutName].progression[
+                    progressions[workoutName] - 1 || 0
+                  ]
+                }
               />
             </div>
           ))}
