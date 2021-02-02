@@ -32,15 +32,14 @@ export default function Workout({
             <img src={s} alt="" style={{ width: "100%", display: "block" }} />
           )}
           value={progression.images}
-          caption={() => (
-            <React.Fragment>
-              <small>
-                <span style={{ opacity: 0.6 }}>{base}</span> /{" "}
-                {progression.name}
-              </small>
-            </React.Fragment>
-          )}
         />
+      )}
+      subTitle={() => (
+        <React.Fragment>
+          <small>
+            <span style={{ opacity: 0.6 }}>{base}</span> / {progression.name}
+          </small>
+        </React.Fragment>
       )}
     >
       <div className="p-grid">

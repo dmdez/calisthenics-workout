@@ -42,7 +42,7 @@ export default function App() {
     });
 
   return (
-    <div className="App">
+    <div className="App" style={{ maxWidth: 720, margin: "0 auto" }}>
       <TabMenu
         model={daysModel}
         activeItem={daysModel.find((d) => d.label === dow)}
