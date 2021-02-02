@@ -2,7 +2,6 @@ import * as React from "react";
 import { ExcerciseProgression } from "./excercises";
 import { Galleria } from "primereact/galleria";
 import { Card } from "primereact/card";
-import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
 
 type Props = {

@@ -9,7 +9,6 @@ import { OverlayPanel } from "primereact/overlaypanel";
 import Workout from "./Workout";
 import { range } from "lodash";
 
-// import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/themes/saga-green/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeflex/primeflex.css";
