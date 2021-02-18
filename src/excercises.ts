@@ -23,7 +23,7 @@ export const DAYS = [
   },
   {
     name: "T",
-    workouts: ["Bridges"]
+    workouts: ["Bridges", "Plank"]
   },
   {
     name: "W",
@@ -31,7 +31,7 @@ export const DAYS = [
   },
   {
     name: "Th",
-    workouts: ["Leg Raises"]
+    workouts: ["Leg Raises", "Sit Thru Knee"]
   },
   {
     name: "F",
@@ -509,6 +509,37 @@ export const excercises: Excercise[] = [
         images: [
           "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597521676571-OC2XR34VLTL1GDXU5UTL/ke17ZwdGBToddI8pDm48kNu--eMln2zIn7qUj0L4pXBZw-zPPgdn4jUwVcJE1ZvWEtT5uBSRWt4vQZAgTJucoTqqXjS3CfNDSuuf31e0tVF9gRHXsL5RZeCGTm-B6UZn5rd-x0Dm8GIL1QBRw4foy-GIi0ZlEJ2Dp0_GhZ2fjGA/image-asset.jpeg?format=1000w",
           "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597521687767-JE581N40GOVOV7S0OX9V/ke17ZwdGBToddI8pDm48kNu--eMln2zIn7qUj0L4pXBZw-zPPgdn4jUwVcJE1ZvWEtT5uBSRWt4vQZAgTJucoTqqXjS3CfNDSuuf31e0tVF9gRHXsL5RZeCGTm-B6UZn5rd-x0Dm8GIL1QBRw4foy-GIi0ZlEJ2Dp0_GhZ2fjGA/One+Leg+Squat+Stop.jpg?format=1000w"
+        ]
+      }
+    ]
+  },
+  {
+    name: "Sit Thru Knee",
+    progression: [
+      {
+        name: "Sit Thru Knee",
+        sets: 3,
+        reps: 20,
+        images: [
+          "https://i.ibb.co/Wkjfr5d/Screen-Shot-2021-02-18-at-1-31-43-PM.png",
+          "https://i.ibb.co/8b7n4L0/Screen-Shot-2021-02-18-at-1-32-05-PM.png",
+          "https://i.ibb.co/HrQXvDj/Screen-Shot-2021-02-18-at-1-32-32-PM.png",
+          "https://i.ibb.co/KDSWSzG/Screen-Shot-2021-02-18-at-1-32-43-PM.png"
+        ]
+      }
+    ]
+  },
+  {
+    name: "Plank",
+    progression: [
+      {
+        name: "Plank walk downs",
+        sets: 3,
+        reps: 20,
+        images: [
+          "https://i.ibb.co/y8xpSRn/Screen-Shot-2021-02-18-at-1-37-55-PM.png",
+          "https://i.ibb.co/LC19Hqf/Screen-Shot-2021-02-18-at-1-37-40-PM.png",
+          "https://i.ibb.co/sKs4Z2V/Screen-Shot-2021-02-18-at-1-37-32-PM.png"
         ]
       }
     ]

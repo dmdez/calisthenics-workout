@@ -97,7 +97,12 @@ export default function App() {
           Source:{" "}
           <a href="https://www.hybridcalisthenics.com/routine">
             Hybrid Calisthenics
+          </a>{" "}
+          /
+          <a href="https://www.youtube.com/watch?v=qw3YMCg4d0Y">
+            Javier Rivero
           </a>
+          {/* https://www.reddit.com/r/bodyweightfitness/comments/lm1nan/bodyweight_finishers/ */}
         </div>
       </div>
     </div>
