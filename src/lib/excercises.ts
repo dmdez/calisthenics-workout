@@ -12,7 +12,23 @@ export type ExcerciseProgression = {
   images: string[];
 };
 
-export const DAYS = [
+export type Day = {
+  name: string;
+  workouts: string[];
+}
+
+export type TodaysRoutine = {
+  workoutName: string;
+  progression: ExcerciseProgression;
+  progressionNumber: number;
+  progressionMax: number;
+}
+
+export type ProgressionState = {
+  [key: string]: number;
+};
+
+export const DAYS: Day[] = [
   {
     name: "Su",
     workouts: []

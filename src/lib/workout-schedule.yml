@@ -1,0 +1,103 @@
+version: 1.0
+schedule:
+  Su:
+  M:
+    - Pushups
+    - Leg Raises
+    - Pullups
+  T:
+    - Bridges
+    - Plank
+  W:
+    - Pushups
+    - Squats
+    - Pullups
+  Th:
+    - Leg Raises
+    - Sit Thru Knee
+  F:
+    - Bridges
+    - Squats
+  Sa:
+
+workouts:
+  Pushups:
+    video: https://www.youtube.com/watch?v=ze4qofHM20k
+    progressions:
+      - name: Wall Pushups
+        sets: 3
+        reps: 50
+        images:
+          - https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597476785905-Y59AFLN4R1ZB3WSOHYZJ/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/Wall+Pushup+Start.jpg?format=1000w
+          - https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597476827530-KHFTL4F1X8XHK9N6FMVU/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/Wall+Pushup+Stop.jpg?format=1000w
+      - name: Incline Pushups
+        sets: 3
+        reps: 40
+        images:
+          - https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597476919111-CXJBHVCZ5CD3K1UOA5TV/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w
+          - https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597476930849-ZIT98EKTE7EVQUWXSZ6D/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w
+      - name: Knee Pushups
+        sets: 2
+        reps: 25
+        images:
+          - https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597476945299-5BKRRIKDMRG9WKXTDFDS/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/Kneeling+Pushup+Start.jpg?format=1000w
+          - https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597476956259-116AEJWJUULTNAPMEIRR/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/Kneeling+Pushup+Stop.jpg?format=1000w
+
+      - name: Full Pushups
+        sets: 2
+        reps: 25
+        images:
+          - https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477294530-J45JYRHGKCXZA8U5AI9S/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w
+          - https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477310177-U21X2ADZDJ0TO427XXWW/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w
+
+        name: "Narrow Pushups",
+        sets: 2,
+        reps: 20,
+        images: [
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477085293-08FDMEN4BU8LOE9ZE0RU/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w",
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477097756-BX0XU5OIF78OJ5U3U7OK/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/Narrow+Pushup+Stop.jpg?format=1000w"
+
+        name: "Side-Staggered Pushups",
+        sets: 2,
+        reps: 15,
+        images: [
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477402888-TH74CHZFV8DDJ72YDTJI/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w",
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477412493-OVCUYHG83F1Q9P9O6KV4/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w",
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477426605-01QHRINA6RHRJELWL4NG/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w",
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477436971-3CBRO82O517Z9U6RW8FB/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w"
+
+        name: "Archer Pushups",
+        sets: 2,
+        reps: 9,
+        images: [
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477530143-6NHHYHQALX347V9QUFIK/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w",
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477538108-9CGGL0MZYSN6RMP9S83J/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w",
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477544967-OLKLA8VZMBOIS8EODDBT/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/Archer+Pushup+Right+Start.jpg?format=1000w",
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477551588-4SM27TO76KNBJQ2YV0L3/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w"
+
+        name: "Sliding One-Arm Pushups",
+        sets: 2,
+        reps: 9,
+        images: [
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477699371-4VI9G6GL3M3G4LEWPPAW/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/Sliding+Pushup+Left+Start.jpg?format=1000w",
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477635027-YEY83XR5WUX91PZRU36D/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w",
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477646266-FH4XX75GSBLM64BRNV8E/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w",
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477654109-BRE2U6GXUKN0BMV8OETM/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w"
+
+        name: "One-Arm Pushups",
+        sets: 2,
+        reps: 9,
+        images: [
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477822094-526R84O73WD5LH165SS5/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w",
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477828850-BL9FA58921LDOXEIXMK6/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w",
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477836518-T6MO8TFJBG7O9WCY2TWG/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w",
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477845085-C6SZ5Y6G45WRW6QNW14N/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w"
+
+        name: "One-Arm Pushups (Feet Together)",
+        sets: 2,
+        reps: 20,
+        images: [
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477792295-X28Y9SBBFG4ANZ9S5P1X/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/One+Arm+Feet+Together+Pushup+Left+Start.jpg?format=1000w",
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477799316-YQWF325FVY57417VJL72/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w",
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477807400-4FYQMWKUMTGIRX2HFLUH/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/One+Arm+Feet+Together+Pushup+Right+Start.jpg?format=1000w",
+          "https://images.squarespace-cdn.com/content/v1/5deaeb267bc46246f5378ee8/1597477814707-9BM29HQ2RR5I8SPW0XK4/ke17ZwdGBToddI8pDm48kAf-OpKpNsh_OjjU8JOdDKBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzAFzFJoCInLPKyj9AG8yKe7-Q2aFvP177fkO9TY_-rz5WoqqTEZpmj4yDEOdwKV68/image-asset.jpeg?format=1000w"
