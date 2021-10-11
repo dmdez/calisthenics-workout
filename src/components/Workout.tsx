@@ -1,4 +1,4 @@
-import { Card, IconButton, Stack, Typography } from "@mui/material";
+import { Card, CardMedia, IconButton, Stack, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import * as React from "react";
 import { ExcerciseProgression } from "../lib/excercises";
@@ -23,42 +23,50 @@ export default function Workout({
 }: Props) {
   return (
     <Card
-    // header={() => (
-    //   <Galleria
-    //     autoPlay={true}
-    //     circular={true}
-    //     transitionInterval={3000}
-    //     showThumbnails={false}
-    //     item={(s: string) => (
-    //       <img src={s} alt="" style={{ width: "100%", display: "block" }} />
-    //     )}
-    //     thumbnail={(s: string) => (
-    //       <img src={s} alt="" style={{ width: "100%", display: "block" }} />
-    //     )}
-    //     value={progression.images}
-    //   />
-    // )}
+      sx={{ display: "flex" }}
+      // header={() => (
+      //   <Galleria
+      //     autoPlay={true}
+      //     circular={true}
+      //     transitionInterval={3000}
+      //     showThumbnails={false}
+      //     item={(s: string) => (
+      //       <img src={s} alt="" style={{ width: "100%", display: "block" }} />
+      //     )}
+      //     thumbnail={(s: string) => (
+      //       <img src={s} alt="" style={{ width: "100%", display: "block" }} />
+      //     )}
+      //     value={progression.images}
+      //   />
+      // )}
     >
-      <Box p={2}>
-        <Typography variant="overline">
-          <span style={{ opacity: 0.6 }}>{base}</span> / {progression.name}
+      <Box p={1} sx={{ flex: 1 }}>
+        <Typography variant="caption">
+          <span style={{ opacity: 0.6 }}>{base}</span> /
+          <div>{progression.name}</div>
         </Typography>
-        <Stack direction="row" spacing={3} pt={1}>
+        <Stack direction="row" spacing={2} pt={1}>
           <div>
             <Stack spacing={1}>
-              <Typography variant="body1">Reps</Typography>
+              <Typography variant="body1" color="GrayText">
+                Reps
+              </Typography>
               <Typography variant="subtitle1">{progression.reps}</Typography>
             </Stack>
           </div>
           <div>
             <Stack spacing={1}>
-              <Typography variant="body1">Sets</Typography>
+              <Typography variant="body1" color="GrayText">
+                Sets
+              </Typography>
               <Typography variant="subtitle1">{progression.sets}</Typography>
             </Stack>
           </div>
-          <div style={{ width: 150 }}>
+          <div>
             <Stack spacing={0.5}>
-              <Typography variant="body1">Progression</Typography>
+              <Typography variant="body1" color="GrayText">
+                Progression
+              </Typography>
               <Stack alignItems="center" spacing={1} direction="row">
                 <IconButton
                   size="small"
@@ -82,6 +90,11 @@ export default function Workout({
           </div>
         </Stack>
       </Box>
+      <CardMedia
+        component="img"
+        sx={{ width: 130 }}
+        image={progression.images[0]}
+      />
     </Card>
   );
 }
