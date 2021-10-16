@@ -1,10 +1,11 @@
-import { useMemo } from "react";
-import { useStatePersist as useState } from "use-state-persist";
+import { useMemo, useState } from "react";
+import { useStatePersist } from "use-state-persist";
 import { DAYS, Excercise, excercises, ProgressionState, TodaysRoutine } from "./excercises";
 
 export function useAppState() {
-  const [dow, setDow] = useState<string>(DAYS[new Date().getDay()].name);
-  const [progressions, setProgressions] = useState<ProgressionState>(
+  const defaultDow = DAYS[new Date().getDay()].name;
+  const [dow, setDow] = useState<string>(defaultDow);
+  const [progressions, setProgressions] = useStatePersist<ProgressionState>(
     "progressions",
     {}
   );

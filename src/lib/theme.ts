@@ -210,7 +210,7 @@ export const getDesignTokens = (mode: 'light' | 'dark') =>
         fontSize: defaultTheme.typography.pxToRem(12), // 12px
         lineHeight: 18 / 12,
         letterSpacing: 0,
-        fontWeight: 700,
+        fontStyle: 'italic'
       },
     },
   });

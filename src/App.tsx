@@ -6,6 +6,7 @@ import { useAppState } from "./lib/useAppState";
 import BrandingProvider from "./BrandingProvider";
 import { Box } from "@mui/system";
 import { BodyContainer } from "./components/BodyContainer";
+import { Home } from "./components/Home";
 
 export default function App() {
   const { dow, setDow, updateProgression, todaysWorkoutRoutine } =
@@ -16,10 +17,14 @@ export default function App() {
       <Header dow={dow} onTabChange={setDow} />
       <BodyContainer>
         <Box p={1}>
-          <WorkoutRoutine
-            routine={todaysWorkoutRoutine}
-            onProgressionChange={updateProgression}
-          />
+          {dow === "home" ? (
+            <Home />
+          ) : (
+            <WorkoutRoutine
+              routine={todaysWorkoutRoutine}
+              onProgressionChange={updateProgression}
+            />
+          )}
         </Box>
         <Box p={1}>
           <Footer />
