@@ -9,7 +9,7 @@ import { Home } from "./components/Home";
 import { Container } from "@mui/material";
 
 export default function App() {
-  const { dow, setDow, updateProgression, todaysWorkoutRoutine } =
+  const { dow, setDow, updateProgression, todaysWorkoutRoutine, handleStart } =
     useAppState();
   const isHomeTab = dow === "home";
 
@@ -19,7 +19,7 @@ export default function App() {
       <Container fixed maxWidth="sm">
         <Box py={2}>
           {isHomeTab ? (
-            <Home />
+            <Home onStart={handleStart} />
           ) : (
             <WorkoutRoutine
               routine={todaysWorkoutRoutine}

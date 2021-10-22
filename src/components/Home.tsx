@@ -1,7 +1,11 @@
-import { Card, Stack, Typography } from "@mui/material";
+import { Button, Card, Stack, Typography, Box } from "@mui/material";
 import React from "react";
 
-export function Home() {
+type Props = {
+  onStart?: () => void;
+};
+
+export function Home({ onStart }: Props) {
   return (
     <Card>
       <Stack alignItems="center" justifyContent="center" spacing={1} p={1}>
@@ -15,7 +19,7 @@ export function Home() {
           Your settings are currently saved in a temporary session, so no
           account is necessary.
         </Typography>
-        <Typography component="div">
+        <Typography component="div" variant="body2">
           <ol>
             <li>Start with the easiest progression (default)</li>
             <li>
@@ -29,6 +33,11 @@ export function Home() {
             <li>Each daily routine can be complete in 30-45 minutes.</li>
           </ol>
         </Typography>
+        <Box pb={3}>
+          <Button variant="contained" onClick={() => onStart && onStart()}>
+            Start Today's Routine
+          </Button>
+        </Box>
       </Stack>
     </Card>
   );

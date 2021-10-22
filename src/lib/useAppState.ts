@@ -4,7 +4,11 @@ import { DAYS, Excercise, excercises, ProgressionState, TodaysRoutine } from "./
 
 export function useAppState() {
   const defaultDow = DAYS[new Date().getDay()].name;
-  const [dow, setDow] = useState<string>(defaultDow);
+  const [hasVisited, setHasVisited] = useStatePersist<boolean>(
+    "hasVisited",
+    false
+  );
+  const [dow, setDow] = useState<string>(hasVisited ? defaultDow : "home");
   const [progressions, setProgressions] = useStatePersist<ProgressionState>(
     "progressions",
     {}
@@ -41,6 +45,14 @@ export function useAppState() {
           : [],
       [todaysWorkout, progressions]
     );
+
+  function handleStart() {
+    setDow(defaultDow);
+    setHasVisited(true);
+  }
   
-  return { dow, setDow, progressions, updateProgression, todaysWorkoutRoutine }
+  return { dow, handleStart, setDow: (day: string) => {
+    setDow(day)
+    setHasVisited(true)
+  }, progressions, updateProgression, todaysWorkoutRoutine, hasVisited }
 }
