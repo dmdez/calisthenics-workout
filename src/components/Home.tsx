@@ -5,16 +5,13 @@ export function Home() {
   return (
     <Card>
       <Stack alignItems="center" justifyContent="center" spacing={1} p={1}>
-        <Typography variant="h5" color="InfoText">
-          So you want to get stronger?
-        </Typography>
         <Typography variant="h3" color="InfoText" component="div">
           💪
         </Typography>
-        <Typography>
+        <Typography textAlign="center">
           Follow the daily excercise routine and ONLY do what is asked that day.
         </Typography>
-        <Typography variant="caption">
+        <Typography variant="caption" textAlign="center">
           Your settings are currently saved in a temporary session, so no
           account is necessary.
         </Typography>
