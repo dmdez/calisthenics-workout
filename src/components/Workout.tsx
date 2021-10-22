@@ -74,7 +74,7 @@ export default function Workout({
           <Divider orientation="vertical" flexItem />
           <div
             style={{
-              visibility: progressionNumber > 1 ? "visible" : "hidden",
+              visibility: progressionMax > 1 ? "visible" : "hidden",
             }}
           >
             <Stack spacing={0.5}>
