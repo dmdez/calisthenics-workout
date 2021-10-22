@@ -16,7 +16,7 @@ export default function App() {
   return (
     <BrandingProvider>
       <Header dow={dow} onTabChange={setDow} />
-      <Container fixed>
+      <Container fixed maxWidth="sm">
         <Box py={2}>
           {isHomeTab ? (
             <Home />

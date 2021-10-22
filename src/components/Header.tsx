@@ -10,7 +10,7 @@ type Props = {
 export function Header({ dow, onTabChange }: Props) {
   return (
     <AppBar position="static">
-      <Container fixed>
+      <Container fixed maxWidth="sm">
         <Tabs
           variant="fullWidth"
           indicatorColor="secondary"
