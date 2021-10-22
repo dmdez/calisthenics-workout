@@ -533,7 +533,7 @@ export const excercises: Excercise[] = [
     name: "Sit Thru Knee",
     progression: [
       {
-        name: "Sit Thru Knee",
+        name: "",
         sets: 3,
         reps: 20,
         images: [

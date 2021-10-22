@@ -1,4 +1,12 @@
-import { Card, CardMedia, IconButton, Stack, Typography } from "@mui/material";
+import {
+  Card,
+  CardMedia,
+  Divider,
+  IconButton,
+  makeStyles,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import * as React from "react";
 import { ExcerciseProgression } from "../lib/excercises";
@@ -45,7 +53,7 @@ export default function Workout({
           <span style={{ opacity: 0.6 }}>{base}</span> /
           <div>{progression.name}</div>
         </Typography>
-        <Stack direction="row" spacing={2} pt={1}>
+        <Stack direction="row" spacing={1} pt={1}>
           <div>
             <Stack spacing={1}>
               <Typography variant="body1" color="GrayText">
@@ -54,6 +62,7 @@ export default function Workout({
               <Typography variant="subtitle1">{progression.reps}</Typography>
             </Stack>
           </div>
+          <Divider orientation="vertical" flexItem />
           <div>
             <Stack spacing={1}>
               <Typography variant="body1" color="GrayText">
@@ -62,7 +71,12 @@ export default function Workout({
               <Typography variant="subtitle1">{progression.sets}</Typography>
             </Stack>
           </div>
-          <div>
+          <Divider orientation="vertical" flexItem />
+          <div
+            style={{
+              visibility: progressionNumber > 1 ? "visible" : "hidden",
+            }}
+          >
             <Stack spacing={0.5}>
               <Typography variant="body1" color="GrayText">
                 Progression

@@ -5,19 +5,20 @@ import { Header } from "./components/Header";
 import { useAppState } from "./lib/useAppState";
 import BrandingProvider from "./BrandingProvider";
 import { Box } from "@mui/system";
-import { BodyContainer } from "./components/BodyContainer";
 import { Home } from "./components/Home";
+import { Container } from "@mui/material";
 
 export default function App() {
   const { dow, setDow, updateProgression, todaysWorkoutRoutine } =
     useAppState();
+  const isHomeTab = dow === "home";
 
   return (
     <BrandingProvider>
       <Header dow={dow} onTabChange={setDow} />
-      <BodyContainer>
-        <Box p={1}>
-          {dow === "home" ? (
+      <Container fixed>
+        <Box py={2}>
+          {isHomeTab ? (
             <Home />
           ) : (
             <WorkoutRoutine
@@ -29,7 +30,7 @@ export default function App() {
         <Box p={1}>
           <Footer />
         </Box>
-      </BodyContainer>
+      </Container>
     </BrandingProvider>
   );
 }
