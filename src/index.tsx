@@ -1,6 +1,7 @@
 import * as React from "react";
 import { render } from "react-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 const queryClient = new QueryClient();
 
@@ -13,3 +14,5 @@ render(
   </QueryClientProvider>,
   rootElement
 );
+
+serviceWorkerRegistration.register();
