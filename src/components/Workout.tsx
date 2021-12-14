@@ -30,24 +30,7 @@ export default function Workout({
   onProgressionChange,
 }: Props) {
   return (
-    <Card
-      sx={{ display: "flex" }}
-      // header={() => (
-      //   <Galleria
-      //     autoPlay={true}
-      //     circular={true}
-      //     transitionInterval={3000}
-      //     showThumbnails={false}
-      //     item={(s: string) => (
-      //       <img src={s} alt="" style={{ width: "100%", display: "block" }} />
-      //     )}
-      //     thumbnail={(s: string) => (
-      //       <img src={s} alt="" style={{ width: "100%", display: "block" }} />
-      //     )}
-      //     value={progression.images}
-      //   />
-      // )}
-    >
+    <Card sx={{ display: "flex" }}>
       <Box p={1} sx={{ flex: 1 }}>
         <Typography variant="caption">
           <span style={{ opacity: 0.6 }}>{base}</span> /

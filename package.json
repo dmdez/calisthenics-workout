@@ -36,7 +36,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "start-sw": "http-server ./build"
+    "start-sw": "npm run build & http-server ./build"
   },
   "browserslist": [
     ">0.2%",
