@@ -16,8 +16,7 @@ export function Home({ onStart }: Props) {
           Follow the daily excercise routine and ONLY do what is asked that day.
         </Typography>
         <Typography variant="caption" textAlign="center">
-          Your settings are currently saved in a temporary session, so no
-          account is necessary.
+          Your settings are currently saved in a local session.
         </Typography>
         <Typography component="div" variant="body2">
           <ol>
