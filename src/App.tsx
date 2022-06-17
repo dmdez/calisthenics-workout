@@ -1,36 +1,44 @@
 import * as React from "react";
-import { Footer } from "./components/Footer";
-import { WorkoutRoutine } from "./components/WorkoutRoutine";
 import { Header } from "./components/Header";
 import { useAppState } from "./lib/useAppState";
 import BrandingProvider from "./BrandingProvider";
-import { Box } from "@mui/system";
 import { Home } from "./components/Home";
-import { Container } from "@mui/material";
+import { Slider } from "./components/Slider";
+import { DAYS } from "./lib/excercises";
+import { styled } from "@mui/system";
+
+const DayContent = styled("div")`
+  position: relative;
+  height: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+`;
 
 export default function App() {
-  const { dow, setDow, updateProgression, todaysWorkoutRoutine, handleStart } =
-    useAppState();
+  const { dow, setDow, handleStart, todaysWorkouts } = useAppState();
   const isHomeTab = dow === "home";
 
   return (
     <BrandingProvider>
       <Header dow={dow} onTabChange={setDow} />
-      <Container fixed maxWidth="sm">
-        <Box py={2}>
-          {isHomeTab ? (
-            <Home onStart={handleStart} />
-          ) : (
-            <WorkoutRoutine
-              routine={todaysWorkoutRoutine}
-              onProgressionChange={updateProgression}
-            />
-          )}
-        </Box>
-        <Box p={1}>
-          <Footer />
-        </Box>
-      </Container>
+      <div style={{ flex: 1 }}>
+        {isHomeTab ? (
+          <Home onStart={handleStart} />
+        ) : (
+          <>
+            {DAYS.map((day) => (
+              <DayContent
+                key={day.name}
+                sx={{
+                  display: day.name === dow ? "block" : "none",
+                }}
+              >
+                <Slider key={dow} workouts={todaysWorkouts} />
+              </DayContent>
+            ))}
+          </>
+        )}
+      </div>
     </BrandingProvider>
   );
 }

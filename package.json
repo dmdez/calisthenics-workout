@@ -10,8 +10,10 @@
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
     "@mui/styled-engine-sc": "^5.0.3",
     "@types/lodash": "4.14.167",
+    "@vimeo/player": "^2.16.4",
     "js-yaml": "^4.1.0",
     "lodash": "4.17.20",
+    "material-ui-image": "^3.3.2",
     "prop-types": "15.7.2",
     "react": "17.0.0",
     "react-dom": "17.0.0",
@@ -28,6 +30,7 @@
     "@types/js-yaml": "^4.0.1",
     "@types/react": "16.9.19",
     "@types/react-dom": "16.9.5",
+    "@types/vimeo__player": "^2.16.3",
     "http-server": "^14.0.0",
     "typescript": "3.7.5"
   },
