@@ -1,11 +1,10 @@
-import * as React from "react";
 import { Header } from "./components/Header";
 import { useAppState } from "./lib/useAppState";
 import BrandingProvider from "./BrandingProvider";
 import { Home } from "./components/Home";
 import { Slider } from "./components/Slider";
 import { DAYS } from "./lib/excercises";
-import { styled } from "@mui/system";
+import { styled } from "@mui/material";
 
 const DayContent = styled("div")`
   position: relative;

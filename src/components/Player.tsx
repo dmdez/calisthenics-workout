@@ -1,4 +1,3 @@
-import React from "react";
 import { default as VimeoPlayer } from "@vimeo/player";
 import { useEffect, useRef } from "react";
 

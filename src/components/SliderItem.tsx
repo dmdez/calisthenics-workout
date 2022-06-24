@@ -1,5 +1,5 @@
-import { styled } from "@mui/system";
-import React, { useEffect, useState } from "react";
+import { styled } from "@mui/material";
+import { useEffect, useState } from "react";
 import { ExcerciseProgression } from "../lib/excercises";
 import { OpenInNew } from "@mui/icons-material";
 import { IconButton } from "@mui/material";

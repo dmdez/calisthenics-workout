@@ -1,5 +1,4 @@
 import { Tab, Tabs, AppBar, SvgIcon, Container } from "@mui/material";
-import React from "react";
 import { DAYS } from "../lib/excercises";
 
 type Props = {

@@ -1,9 +1,9 @@
-import { styled } from "@mui/system";
+import { styled } from "@mui/material";
 import { findIndex } from "lodash";
-import React from "react";
 import { useStatePersist } from "use-state-persist";
 import { ExcerciseProgression } from "../lib/excercises";
 import { useSlider } from "../lib/useSlider";
+import { EmptyWorkout } from "./EmptyWorkout";
 import { SliderItem } from "./SliderItem";
 
 const Root = styled("div")`
@@ -88,6 +88,9 @@ export function Slider({
     progressions: ExcerciseProgression[];
   }[];
 }) {
+  if (workouts.length <= 0) {
+    return <EmptyWorkout />;
+  }
   return (
     <Root>
       {workouts.map((workout, i) => (
