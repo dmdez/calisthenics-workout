@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as serviceWorkerRegistration from "../serviceWorkerRegistration";
 
-import { Button, Snackbar } from "@mui/material";
+import { Alert, Button, Snackbar } from "@mui/material";
 
 export function ServiceWorkerUpdater() {
   const [showReload, setShowReload] = React.useState(false);
@@ -26,14 +26,20 @@ export function ServiceWorkerUpdater() {
   return (
     <Snackbar
       open={showReload}
-      message="A new version is available!"
       onClick={reloadPage}
-      anchorOrigin={{ vertical: "top", horizontal: "center" }}
-      action={
-        <Button color="inherit" size="small" onClick={reloadPage}>
-          Reload
-        </Button>
-      }
-    />
+      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+    >
+      <Alert
+        severity="info"
+        sx={{ width: "100%" }}
+        action={
+          <Button color="inherit" size="small" onClick={reloadPage}>
+            Reload
+          </Button>
+        }
+      >
+        A new version is available!
+      </Alert>
+    </Snackbar>
   );
 }
