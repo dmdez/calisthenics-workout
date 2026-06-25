@@ -1,31 +1,19 @@
-import * as React from "react";
-import * as serviceWorkerRegistration from "../serviceWorkerRegistration";
-
+import { useRegisterSW } from "virtual:pwa-register/react";
 import { Alert, Button, Snackbar } from "@mui/material";
 
 export function ServiceWorkerUpdater() {
-  const [showReload, setShowReload] = React.useState(false);
-  const [waitingWorker, setWaitingWorker] =
-    React.useState<ServiceWorker | null>(null);
-
-  const onSWUpdate = (registration: ServiceWorkerRegistration) => {
-    setShowReload(true);
-    setWaitingWorker(registration.waiting);
-  };
+  const {
+    needRefresh: [needRefresh],
+    updateServiceWorker,
+  } = useRegisterSW();
 
   const reloadPage = () => {
-    waitingWorker?.postMessage({ type: "SKIP_WAITING" });
-    setShowReload(false);
-    window.location.reload();
+    updateServiceWorker(true);
   };
-
-  React.useEffect(() => {
-    serviceWorkerRegistration.register({ onUpdate: onSWUpdate });
-  }, []);
 
   return (
     <Snackbar
-      open={showReload}
+      open={needRefresh}
       onClick={reloadPage}
       anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
     >

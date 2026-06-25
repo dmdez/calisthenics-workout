@@ -8,9 +8,11 @@ import { styled } from "@mui/material";
 
 const DayContent = styled("div")`
   position: relative;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
   max-width: 600px;
   margin: 0 auto;
+  width: 100%;
 `;
 
 export default function App() {
@@ -20,7 +22,7 @@ export default function App() {
   return (
     <BrandingProvider>
       <Header dow={dow} onTabChange={setDow} />
-      <div style={{ flex: 1 }}>
+      <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
         {isHomeTab ? (
           <Home onStart={handleStart} />
         ) : (
@@ -29,7 +31,8 @@ export default function App() {
               <DayContent
                 key={day.name}
                 sx={{
-                  display: day.name === dow ? "block" : "none",
+                  display: day.name === dow ? "flex" : "none",
+                  flexDirection: "column",
                 }}
               >
                 <Slider key={dow} workouts={todaysWorkouts} />

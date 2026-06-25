@@ -22,9 +22,9 @@ const Container = styled("div")`
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  // scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
   position: relative;
   &::-webkit-scrollbar {
     display: none;
@@ -36,6 +36,7 @@ const Item = styled("div")`
   flex-shrink: 0;
   width: 100%;
   height: 100%;
+  min-height: 0;
   transform-origin: center center;
   transform: scale(1);
   transition: transform 0.5s;
@@ -47,7 +48,10 @@ const Item = styled("div")`
 
 const Wrapper = styled("div")`
   position: relative;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
   margin: 10px 10px 0;
   &:last-child {
     margin-bottom: 10px;

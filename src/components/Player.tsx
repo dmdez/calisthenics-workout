@@ -1,4 +1,5 @@
-import { default as VimeoPlayer } from "@vimeo/player";
+import VimeoPlayer from "@vimeo/player";
+import type { VimeoUrl } from "@vimeo/player/types/formats";
 import { useEffect, useRef } from "react";
 
 type Props = {
@@ -12,15 +13,13 @@ export function Player({ url }: Props) {
   useEffect(() => {
     if (ref.current) {
       playerRef.current = new VimeoPlayer(ref.current, {
-        url,
+        url: url as VimeoUrl,
       });
-
-      // playerRef.current.loadVideo(url);
     }
 
     return () => {
       playerRef.current?.destroy();
     };
-  }, []);
+  }, [url]);
   return <div ref={ref} />;
 }

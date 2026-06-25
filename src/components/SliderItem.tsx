@@ -1,10 +1,9 @@
 import { styled } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ExcerciseProgression } from "../lib/excercises";
+import { VIDEO_THUMBNAILS } from "../lib/video-thumbnails";
 import { OpenInNew } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-import Image from "material-ui-image";
-import { useStatePersist } from "use-state-persist";
 import { Player } from "./Player";
 
 const ItemContent = styled("div")`
@@ -19,7 +18,16 @@ const ItemContent = styled("div")`
 
 const ImageContainer = styled("div")`
   flex: 1;
+  min-height: 0;
+  overflow: hidden;
+`;
+
+const Thumbnail = styled("img")`
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  cursor: pointer;
+  display: block;
 `;
 
 export function SliderItem({
@@ -30,19 +38,8 @@ export function SliderItem({
   progression: ExcerciseProgression;
 }) {
   const { videoUrl, name, reps, sets } = progression;
-  const [imageCacheUrl, setImageCacheUrl] = useStatePersist<string | undefined>(
-    `imageCache${videoUrl}`
-  );
   const [thumbClicked, setThumbClicked] = useState(false);
-
-  useEffect(() => {
-    if (!imageCacheUrl) {
-      window
-        .fetch(`https://noembed.com/embed?url=${videoUrl}`)
-        .then((response) => response.json())
-        .then((data) => setImageCacheUrl(data.thumbnail_url));
-    }
-  }, []);
+  const thumbnailUrl = videoUrl ? VIDEO_THUMBNAILS[videoUrl] : undefined;
 
   return (
     <>
@@ -69,11 +66,10 @@ export function SliderItem({
         {thumbClicked && videoUrl ? (
           <Player url={videoUrl} />
         ) : (
-          imageCacheUrl && (
-            <Image
-              src={imageCacheUrl}
-              style={{ paddingTop: undefined, height: "100%" }}
-              imageStyle={{ objectFit: "cover" }}
+          thumbnailUrl && (
+            <Thumbnail
+              src={thumbnailUrl}
+              alt={`${workoutName} / ${name}`}
               onClick={() => setThumbClicked(true)}
             />
           )
