@@ -2,8 +2,8 @@ import * as React from "react";
 import { deepmerge } from "@mui/utils";
 import { ThemeProvider, useTheme, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import GlobalStyles from "@mui/material/GlobalStyles";
 import { getDesignTokens, getThemedComponents } from "./lib/theme";
-import { GlobalStyles } from "@mui/styled-engine";
 
 export default function BrandingProvider({
   children,

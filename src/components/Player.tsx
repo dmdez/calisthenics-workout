@@ -1,26 +1,40 @@
-import { default as VimeoPlayer } from "@vimeo/player";
-import { useEffect, useRef } from "react";
+import { styled } from "@mui/material";
+
+const PlayerContainer = styled("div")`
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+`;
+
+function parseVimeoId(url: string): string | undefined {
+  return url.match(/vimeo\.com\/(?:video\/)?(\d+)/)?.[1];
+}
 
 type Props = {
   url: string;
 };
 
 export function Player({ url }: Props) {
-  const ref = useRef<HTMLDivElement>(null);
-  const playerRef = useRef<VimeoPlayer | null>(null);
+  const id = parseVimeoId(url);
+  if (!id) return null;
 
-  useEffect(() => {
-    if (ref.current) {
-      playerRef.current = new VimeoPlayer(ref.current, {
-        url,
-      });
-
-      // playerRef.current.loadVideo(url);
-    }
-
-    return () => {
-      playerRef.current?.destroy();
-    };
-  }, []);
-  return <div ref={ref} />;
+  return (
+    <PlayerContainer>
+      <iframe
+        src={`https://player.vimeo.com/video/${id}?autoplay=1&playsinline=1&title=0&byline=0&portrait=0`}
+        allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+        allowFullScreen
+        title="Exercise video"
+      />
+    </PlayerContainer>
+  );
 }
