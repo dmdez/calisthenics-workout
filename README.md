@@ -11,12 +11,12 @@ Skill days (Tue / Thu) fill gaps without frying the same patterns.
 
 | Day | Focus | Intent |
 |-----|--------|--------|
-| Monday | Shoulders / Hamstrings | Vertical push + posterior chain |
-| Tuesday | Calisthenics progressions | Skill / levers / core |
-| Wednesday | Push / Rows | Horizontal push + pull |
-| Thursday | Calisthenics progressions | Handstand / balance / mobility |
-| Friday | Pull / Squat | Vertical pull + legs |
-| Sat–Sun | Rest & play | Recover, hike, kids |
+| [Monday](#monday) | Shoulders / Hamstrings | Vertical push + posterior chain |
+| [Tuesday](#tuesday) | Calisthenics progressions | Skill / levers / core |
+| [Wednesday](#wednesday) | Push / Rows | Horizontal push + pull |
+| [Thursday](#thursday) | Calisthenics progressions | Handstand / balance / mobility |
+| [Friday](#friday) | Pull / Squat | Vertical pull + legs |
+| [Sat–Sun](#weekend) | Rest & play | Recover, hike, kids |
 
 ---
 
@@ -34,7 +34,8 @@ Skill days (Tue / Thu) fill gaps without frying the same patterns.
 - Lateral / rear delt raises — shoulders get stronger when the small stuff keeps up
 - Face pulls or band pull-aparts — protects the overhead work
 - Single-leg RDL or sliding leg curls — if bilateral hinges feel too easy
-- Tibialis raises or farmer carries — cheap ankle / grip insurance
+- Tibialis raises — cheap ankle insurance
+- Grip: farmer carries or suitcase carries — heavy, short sets; put them after Lu Raises so hands aren't fried for pressing
 
 **Opinion:** Keep overhead volume moderate. Save true handstand *strength* for Thursday so Monday stays a press day, not a skill smash.
 
@@ -56,6 +57,7 @@ Offset day. Bias **pulling-line skill** and core so you don't compete with Wedne
 - Dragon flags / hanging leg raises — builds the hollow body levers need
 - Soft muscle-up practice (bands or jumping) — *technique only*, not max sets; Friday owns hard pull volume
 - Scapular pull-ups and active hangs — quiet work that pays off on Friday
+- Grip: towel or fat-grip hangs — short, after lever work; skip if elbows feel hot
 
 **Opinion:** Levers are the right Tuesday bet. They reward consistency more than grinding. Pick **one** lever family per block (e.g. 4–6 weeks of front lever) and treat the other as light maintenance. Avoid heavy planche here — that fights Monday shoulders and Wednesday push.
 
@@ -110,6 +112,7 @@ Offset day. Bias **balance, inversion, and mobility** so Friday's pull/squat sta
 **Primary**
 - Pull-up variations (pronated, chest-to-bar, weighted, or L-sit pull-ups)
 - Squat variations (back squat, front squat, goblet, or Bulgarian split squats)
+- Grip (pick one to progress): plate pinches, thick-bar / towel holds, or crush-gripper work — after pull-ups and squats so the mains stay crisp
 
 **Fill the gaps**
 - Chin-ups or mixed-grip pulls — if elbow comfort or biceps need attention
@@ -119,7 +122,7 @@ Offset day. Bias **balance, inversion, and mobility** so Friday's pull/squat sta
 - Dead hangs or scap pulls as a warm-up — then earn the hard sets
 - Core finisher: hanging knees-to-elbows or ab wheel — short, not a second workout
 
-**Opinion:** This is your vertical-pull + legs anchor. Progress one pull-up variation and one squat variation at a time. Use Tuesday's lever work to support pull-ups; don't chase max-effort muscle-ups on the same day you also squat hard.
+**Opinion:** This is your vertical-pull + legs + grip anchor. Progress one pull-up variation, one squat variation, and one grip drill at a time. Use Tuesday's lever work to support pull-ups; don't chase max-effort muscle-ups on the same day you also squat hard.
 
 ---
 
@@ -149,3 +152,8 @@ Saturday & Sunday — recover and move for joy.
 - One main lift or pattern to progress on Mon / Wed / Fri
 - One primary skill to progress on Tue / Thu
 - Everything else is support, not ego
+
+**Grip**
+- Primary: Fri pinch / thick-bar / gripper work — one drill to progress each week
+- Support: Mon farmers / suitcase carries
+- Optional hang grip: Tue towel hangs — skip or keep light if elbows feel hot after levers + Fri grip
