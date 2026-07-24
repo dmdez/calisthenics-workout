@@ -1,26 +1,185 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="theme-color" content="#000000" />
-    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-    <title>Calisthenics Workout</title>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/primeicons@2.0.0/primeicons.css"
-    />
-    <style>
-      html, body, #root { height: 100%; }
-      #root { display: flex; flex-direction: column; }
-    </style>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <script type="module" src="/src/index.tsx"></script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calisthenics Workout</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <button type="button" class="today-btn" id="today-btn">Today</button>
+      <nav class="day-nav" id="day-nav" aria-label="Workout days"></nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <p class="status">Loading workout…</p>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked@15/marked.min.js"></script>
+  <script>
+    const SHORT_LABELS = {
+      'Week at a Glance': 'Week',
+      Monday: 'Mon',
+      Tuesday: 'Tue',
+      Wednesday: 'Wed',
+      Thursday: 'Thu',
+      Friday: 'Fri',
+      Weekend: 'Sat/Sun',
+      'Progression Notes': 'Notes',
+    };
+
+    const DAY_IDS = [
+      'weekend', // Sunday
+      'monday',
+      'tuesday',
+      'wednesday',
+      'thursday',
+      'friday',
+      'weekend', // Saturday
+    ];
+
+    function slugify(text) {
+      return text
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/\s+/g, '-');
+    }
+
+    function sectionTitle(markdown) {
+      const match = markdown.match(/^#{1,3}\s+(.+)$/m);
+      return match ? match[1].trim() : 'Section';
+    }
+
+    function todaysId() {
+      return DAY_IDS[new Date().getDay()];
+    }
+
+    function jumpToToday() {
+      const el = document.getElementById(todaysId());
+      if (!el) return;
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.replaceState(null, '', `#${todaysId()}`);
+    }
+
+    function setActiveNav(id) {
+      document.querySelectorAll('.day-nav a').forEach((link) => {
+        link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`);
+      });
+    }
+
+    function collapseOptionalSections(root) {
+      const collapsibleTitles = new Set([
+        'fill the gaps',
+        'other progressions worth rotating',
+      ]);
+
+      root.querySelectorAll('p').forEach((p) => {
+        const strong = p.querySelector(':scope > strong');
+        if (!strong) return;
+
+        const title = strong.textContent.trim();
+        if (!collapsibleTitles.has(title.toLowerCase())) return;
+
+        const list = p.nextElementSibling;
+        if (!list || list.tagName !== 'UL') return;
+
+        const details = document.createElement('details');
+        details.className = 'fill-gaps';
+
+        const summary = document.createElement('summary');
+        summary.textContent = title;
+
+        details.appendChild(summary);
+        details.appendChild(list);
+        p.replaceWith(details);
+      });
+    }
+
+    async function init() {
+      const content = document.getElementById('content');
+      const nav = document.getElementById('day-nav');
+      const todayBtn = document.getElementById('today-btn');
+
+      todayBtn.addEventListener('click', jumpToToday);
+
+      let markdown;
+      try {
+        const res = await fetch('README.md', { cache: 'no-cache' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        markdown = await res.text();
+      } catch (err) {
+        content.innerHTML = `<p class="status">Couldn’t load README.md. Serve this folder over HTTP (npm run serve).</p>`;
+        console.error(err);
+        return;
+      }
+
+      const chunks = markdown
+        .split(/\n---\n/)
+        .map((chunk) => chunk.trim())
+        .filter(Boolean);
+
+      const today = todaysId();
+      content.innerHTML = '';
+      nav.innerHTML = '';
+
+      for (const chunk of chunks) {
+        const title = sectionTitle(chunk);
+        const id = slugify(title);
+        const short = SHORT_LABELS[title] || title;
+        const isToday = id === today;
+
+        const article = document.createElement('article');
+        article.className = `day${isToday ? ' is-today' : ''}`;
+        article.id = id;
+        article.innerHTML = `
+          ${isToday ? '<div class="day-label">Today</div>' : ''}
+          ${marked.parse(chunk)}
+        `;
+        collapseOptionalSections(article);
+        content.appendChild(article);
+
+        const link = document.createElement('a');
+        link.href = `#${id}`;
+        link.textContent = short;
+        if (isToday) link.classList.add('is-today-link');
+        nav.appendChild(link);
+      }
+
+      nav.addEventListener('click', (event) => {
+        const link = event.target.closest('a');
+        if (!link) return;
+        const id = link.getAttribute('href').slice(1);
+        setActiveNav(id);
+      });
+
+      const initialId =
+        location.hash && location.hash.length > 1
+          ? location.hash.slice(1)
+          : today;
+
+      const target = document.getElementById(initialId) || document.getElementById(today);
+      if (target) {
+        setActiveNav(target.id);
+        // Wait a tick so layout is ready
+        requestAnimationFrame(() => {
+          target.scrollIntoView({ behavior: 'instant', block: 'start' });
+          if (!location.hash) history.replaceState(null, '', `#${target.id}`);
+        });
+      }
+    }
+
+    init();
+  </script>
+</body>
 </html>

@@ -1,46 +1,15 @@
 {
-  "name": "calisthenics-workout",
+  "name": "calisthenics-workout2",
   "version": "1.0.0",
-  "description": "",
-  "keywords": [],
-  "type": "module",
-  "engines": {
-    "node": "24.x"
-  },
-  "dependencies": {
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
-    "@mui/icons-material": "5.14.12",
-    "@mui/material": "5.14.12",
-    "@types/lodash": "4.14.167",
-    "lodash": "4.17.20",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "use-state-persist": "0.2.3"
-  },
-  "devDependencies": {
-    "@types/react": "18.0.14",
-    "@types/react-dom": "18.0.5",
-    "@vitejs/plugin-react": "^4.3.4",
-    "typescript": "^5.7.0",
-    "tsx": "^4.19.0",
-    "vite": "^6.0.0",
-    "vite-plugin-pwa": "^0.21.1"
-  },
+  "description": "Weekly strength schedule — push, pull, squat, and skill work.",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "fetch-thumbnails": "tsx scripts/fetch-thumbnails.ts"
+    "serve": "serve .",
+    "start": "serve ."
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "license": {
-    "type": "MIT",
-    "url": "https://www.opensource.org/licenses/mit-license.php"
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serve": "^14.2.6"
   }
 }
