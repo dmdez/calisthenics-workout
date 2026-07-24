@@ -1,9 +1,15 @@
-# Calisthenics Workout
+<p align="center">
+  <img src="icon.svg" alt="Calisthenics Workout" width="72" height="72" />
+</p>
 
-Weekly strength schedule — push, pull, squat, and skill work.
+<h1 align="center">Calisthenics Workout</h1>
 
-Heavy days (Mon / Wed / Fri) build strength.  
-Skill days (Tue / Thu) fill gaps without frying the same patterns.
+<p align="center">
+  Weekly strength schedule — push, pull, squat, and skill work.<br />
+  <br />
+  Heavy days (Mon / Wed / Fri) build strength.<br />
+  Skill days (Tue / Thu) fill gaps without frying the same patterns.
+</p>
 
 ---
 
