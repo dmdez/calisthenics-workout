@@ -31,17 +31,17 @@
 ### Shoulders / Hamstrings
 
 **Primary**
-- Overhead press (barbell, dumbbell, or pike / HSPU progressions)
-- Lu Raises — light–moderate dumbbells; full scapular upward rotation from hips to overhead
-- Hip hinge: Romanian deadlift, good mornings, or Nordic curls
-- Optional: standing or seated calf raises
+- **Overhead press** — Barbell, dumbbell, or pike / HSPU progressions.
+- **Lu Raises** — Light–moderate dumbbells; full scapular upward rotation from hips to overhead.
+- **Hip hinge** — Romanian deadlift, good mornings, or Nordic curls.
+- **Calf raises** (optional) — Standing or seated.
 
 **Fill the gaps**
-- Lateral / rear delt raises — shoulders get stronger when the small stuff keeps up
-- Face pulls or band pull-aparts — protects the overhead work
-- Single-leg RDL or sliding leg curls — if bilateral hinges feel too easy
-- Tibialis raises — cheap ankle insurance
-- Grip: farmer carries or suitcase carries — heavy, short sets; put them after Lu Raises so hands aren't fried for pressing
+- **Lateral / rear delt raises** — Shoulders get stronger when the small stuff keeps up.
+- **Face pulls or band pull-aparts** — Protects the overhead work.
+- **Single-leg RDL or sliding leg curls** — If bilateral hinges feel too easy.
+- **Tibialis raises** — Cheap ankle insurance.
+- **Grip: farmer or suitcase carries** — Heavy, short sets; put them after Lu Raises so hands aren't fried for pressing.
 
 **Opinion:** Keep overhead volume moderate. Save true handstand *strength* for Thursday so Monday stays a press day, not a skill smash.
 
@@ -54,16 +54,16 @@
 Offset day. Bias **pulling-line skill** and core so you don't compete with Wednesday's horizontal push.
 
 **Primary candidates**
-- Front lever progressions (tuck → advanced tuck → one-leg → straddle → full)
-- Back lever progressions (skin-the-cat → tuck → straddle → full)
-- Optional: ice-cream makers or German hangs for shoulder prep
+- **Front lever** — Tuck → advanced tuck → one-leg → straddle → full.
+- **Back lever** — Skin-the-cat → tuck → straddle → full.
+- **Ice-cream makers or German hangs** (optional) — Shoulder prep.
 
 **Other progressions worth rotating**
-- L-sit → V-sit on parallettes or floor — pairs well with levers, low CNS cost
-- Dragon flags / hanging leg raises — builds the hollow body levers need
-- Soft muscle-up practice (bands or jumping) — *technique only*, not max sets; Friday owns hard pull volume
-- Scapular pull-ups and active hangs — quiet work that pays off on Friday
-- Grip: towel or fat-grip hangs — short, after lever work; skip if elbows feel hot
+- **L-sit → V-sit** — On parallettes or floor; pairs well with levers, low CNS cost.
+- **Dragon flags / hanging leg raises** — Builds the hollow body levers need.
+- **Soft muscle-up practice** — Bands or jumping; *technique only*, not max sets. Friday owns hard pull volume.
+- **Scapular pull-ups and active hangs** — Quiet work that pays off on Friday.
+- **Grip: towel or fat-grip hangs** — Short, after lever work; skip if elbows feel hot.
 
 **Opinion:** Levers are the right Tuesday bet. They reward consistency more than grinding. Pick **one** lever family per block (e.g. 4–6 weeks of front lever) and treat the other as light maintenance. Avoid heavy planche here — that fights Monday shoulders and Wednesday push.
 
@@ -74,16 +74,16 @@ Offset day. Bias **pulling-line skill** and core so you don't compete with Wedne
 ### Push / Rows
 
 **Primary**
-- Bench press
-- Incline press (barbell or dumbbell)
-- Horizontal rows (barbell, chest-supported, or ring / inverted rows)
+- **Bench press** — Barbell or dumbbell; the main horizontal press to progress.
+- **Incline press** — Barbell or dumbbell.
+- **Horizontal rows** — Barbell, chest-supported, or ring / inverted rows.
 
 **Fill the gaps**
-- Dips or ring dips (assisted → full → weighted) — bridges gym push and calisthenics
-- Push-up variations (pseudo-planche, archer, deficit) — if you want a bodyweight finisher
-- One-arm or paused rows — if horizontal pull is lagging behind the presses
-- Triceps extensions or skull crushers — lockout help for bench and dips
-- Serratus / scap push-ups — keeps the shoulder blades honest under load
+- **Dips or ring dips** — Assisted → full → weighted; bridges gym push and calisthenics.
+- **Push-up variations** — Pseudo-planche, archer, or deficit; a bodyweight finisher.
+- **One-arm or paused rows** — If horizontal pull is lagging behind the presses.
+- **Triceps extensions or skull crushers** — Lockout help for bench and dips.
+- **Serratus / scap push-ups** — Keeps the shoulder blades honest under load.
 
 **Opinion:** Rows should roughly match push volume over the week. If bench is climbing and your back isn't, add a second row variation before adding another press.
 
@@ -96,16 +96,16 @@ Offset day. Bias **pulling-line skill** and core so you don't compete with Wedne
 Offset day. Bias **balance, inversion, and mobility** so Friday's pull/squat stays fresh.
 
 **Primary candidates**
-- Handstand practice: wall holds → heel pulls / face-to-wall → freestanding attempts
-- Shoulder openers and wrist prep before volume
-- Optional: crow / crane or headstand work as inversion entry points
+- **Handstand practice** — Wall holds → heel pulls / face-to-wall → freestanding attempts.
+- **Shoulder openers and wrist prep** — Before any handstand volume.
+- **Crow / crane or headstand** (optional) — Inversion entry points.
 
 **Other progressions worth rotating**
-- Handstand push-up *skill* volume only if Monday overhead wasn't brutal — prefer negatives, pirouettes, or short freestanding attempts
-- Elbow lever / planche lean — short sets; builds straight-arm strength without a full planche block
-- Pistol squat progressions (shrimp, assisted pistol, box pistol) — light technical work; leave heavy squat loading for Friday
-- Bridge / thoracic mobility — underrated for overhead and handstand longevity
-- Skin-the-cat + German hang mobility — keeps shoulders happy after Monday press
+- **Handstand push-up skill** — Only if Monday overhead wasn't brutal; prefer negatives, pirouettes, or short freestanding attempts.
+- **Elbow lever / planche lean** — Short sets; builds straight-arm strength without a full planche block.
+- **Pistol squat progressions** — Shrimp, assisted pistol, or box pistol; light technical work. Leave heavy squat loading for Friday.
+- **Bridge / thoracic mobility** — Underrated for overhead and handstand longevity.
+- **Skin-the-cat + German hang** — Keeps shoulders happy after Monday press.
 
 **Opinion:** Handstands belong on Thursday more than Tuesday. You're inverted, not pulling hard, and you get a buffer after Monday's shoulders. Cap sessions by quality (clean holds / attempts), not by "more minutes." If wrists or shoulders feel fried, swap to mobility + L-sit and call it a win.
 
@@ -116,17 +116,17 @@ Offset day. Bias **balance, inversion, and mobility** so Friday's pull/squat sta
 ### Pull / Squat
 
 **Primary**
-- Pull-up variations (pronated, chest-to-bar, weighted, or L-sit pull-ups)
-- Squat variations (back squat, front squat, goblet, or Bulgarian split squats)
-- Grip (pick one to progress): plate pinches, thick-bar / towel holds, or crush-gripper work — after pull-ups and squats so the mains stay crisp
+- **Pull-ups** — Pronated, chest-to-bar, weighted, or L-sit.
+- **Squats** — Back squat, front squat, goblet, or Bulgarian split squats.
+- **Grip** — Pick one to progress: plate pinches, thick-bar / towel holds, or crush-gripper work. After pull-ups and squats so the mains stay crisp.
 
 **Fill the gaps**
-- Chin-ups or mixed-grip pulls — if elbow comfort or biceps need attention
-- Archer / typewriter pull-ups — toward one-arm pull-up without abandoning volume
-- Romanian or pause squats — if you want more control without adding another heavy day
-- Calf raises (if Monday skipped them) — easy to park at the end
-- Dead hangs or scap pulls as a warm-up — then earn the hard sets
-- Core finisher: hanging knees-to-elbows or ab wheel — short, not a second workout
+- **Chin-ups or mixed-grip pulls** — If elbow comfort or biceps need attention.
+- **Archer / typewriter pull-ups** — Toward one-arm pull-up without abandoning volume.
+- **Romanian or pause squats** — More control without adding another heavy day.
+- **Calf raises** — If Monday skipped them; easy to park at the end.
+- **Dead hangs or scap pulls** — As a warm-up, then earn the hard sets.
+- **Core finisher** — Hanging knees-to-elbows or ab wheel; short, not a second workout.
 
 **Opinion:** This is your vertical-pull + legs + grip anchor. Progress one pull-up variation, one squat variation, and one grip drill at a time. Use Tuesday's lever work to support pull-ups; don't chase max-effort muscle-ups on the same day you also squat hard.
 

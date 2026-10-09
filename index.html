@@ -16,8 +16,8 @@
 <body>
   <header class="site-header">
     <div class="nav-inner">
-      <button type="button" class="today-btn" id="today-btn">Today</button>
       <nav class="day-nav" id="day-nav" aria-label="Workout days"></nav>
+      <div class="level" id="level" role="radiogroup" aria-label="Level"></div>
     </div>
   </header>
 
@@ -25,19 +25,13 @@
     <p class="status">Loading workout…</p>
   </main>
 
+  <button type="button" class="slide-arrow slide-arrow--prev" id="prev-btn" aria-label="Previous day">‹</button>
+  <button type="button" class="slide-arrow slide-arrow--next" id="next-btn" aria-label="Next day">›</button>
+
   <script src="https://cdn.jsdelivr.net/npm/marked@15/marked.min.js"></script>
   <script>
-    const SHORT_LABELS = {
-      'Calisthenics Workout': 'Home',
-      'Week at a Glance': 'Week',
-      Monday: 'Mon',
-      Tuesday: 'Tue',
-      Wednesday: 'Wed',
-      Thursday: 'Thu',
-      Friday: 'Fri',
-      Weekend: 'Sat/Sun',
-      'Progression Notes': 'Notes',
-    };
+    // README sections that are for GitHub only, not the app
+    const HIDDEN_SECTIONS = new Set(['calisthenics-workout', 'week-at-a-glance']);
 
     const DAY_IDS = [
       'weekend', // Sunday
@@ -65,15 +59,106 @@
       return 'Section';
     }
 
+    // Easiest first — order of the segmented control
+    // Icons from Lucide (ISC license): feather = light, dumbbell = loaded
+    const LEVELS = {
+      beginner: {
+        label: 'Beginner',
+        file: 'BEGINNER.md',
+        icon: '<path d="M12.67 19a2 2 0 0 0 1.416-.588l6.154-6.172a6 6 0 0 0-8.49-8.49L5.586 9.914A2 2 0 0 0 5 11.328V18a1 1 0 0 0 1 1z"/><path d="M16 8 2 22"/><path d="M17.5 15H9"/>',
+      },
+      standard: {
+        label: 'Standard',
+        file: 'README.md',
+        icon: '<path d="M17.596 12.768a2 2 0 1 0 2.829-2.829l-1.768-1.767a2 2 0 0 0 2.828-2.829l-2.828-2.828a2 2 0 0 0-2.829 2.828l-1.767-1.768a2 2 0 1 0-2.829 2.829z"/><path d="m2.5 21.5 1.4-1.4"/><path d="m20.1 3.9 1.4-1.4"/><path d="M5.343 21.485a2 2 0 1 0 2.829-2.828l1.767 1.768a2 2 0 1 0 2.829-2.829l-6.364-6.364a2 2 0 1 0-2.829 2.829l1.768 1.767a2 2 0 0 0-2.828 2.829z"/><path d="m9.6 14.4 4.8-4.8"/>',
+      },
+    };
+    const LEVEL_KEY = 'workout-level';
+
+    function initialLevel() {
+      const param = new URLSearchParams(location.search).get('level');
+      if (param in LEVELS) return param;
+      try {
+        const saved = localStorage.getItem(LEVEL_KEY);
+        if (saved in LEVELS) return saved;
+      } catch {}
+      return 'standard';
+    }
+
+    function saveLevel(level) {
+      try {
+        localStorage.setItem(LEVEL_KEY, level);
+      } catch {}
+      const url = new URL(location.href);
+      if (level === 'standard') url.searchParams.delete('level');
+      else url.searchParams.set('level', level);
+      history.replaceState(null, '', url);
+    }
+
     function todaysId() {
       return DAY_IDS[new Date().getDay()];
     }
 
-    function jumpToToday() {
-      const el = document.getElementById(todaysId());
-      if (!el) return;
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      history.replaceState(null, '', `#${todaysId()}`);
+    let currentId = null;
+
+    function slides() {
+      return [...document.querySelectorAll('.day')];
+    }
+
+    function setCurrent(id) {
+      if (id === currentId) return;
+      currentId = id;
+      slides().forEach((el) => {
+        const isCurrent = el.id === id;
+        el.classList.toggle('is-current', isCurrent);
+        el.setAttribute('aria-hidden', String(!isCurrent));
+      });
+      setActiveNav(id);
+      document
+        .querySelector(`.day-nav a[href="#${id}"]`)
+        ?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      history.replaceState(null, '', `#${id}`);
+
+      const all = slides();
+      const index = all.findIndex((el) => el.id === id);
+      document.getElementById('prev-btn').disabled = index <= 0;
+      document.getElementById('next-btn').disabled = index >= all.length - 1;
+    }
+
+    function goToSlide(id, behavior = 'smooth') {
+      const content = document.getElementById('content');
+      const el = document.getElementById(id);
+      if (!el || !el.classList.contains('day')) return;
+      const left = el.offsetLeft - (content.clientWidth - el.offsetWidth) / 2;
+      content.scrollTo({ left, behavior });
+      setCurrent(id);
+    }
+
+    function stepSlide(delta) {
+      const all = slides();
+      const index = all.findIndex((el) => el.id === currentId);
+      const next = all[index + delta];
+      if (next) goToSlide(next.id);
+    }
+
+    // Whichever slide is closest to the center of the carousel is current
+    function syncCurrentFromScroll() {
+      const content = document.getElementById('content');
+      const center = content.scrollLeft + content.clientWidth / 2;
+      let closest = null;
+      let distance = Infinity;
+      for (const el of slides()) {
+        const d = Math.abs(el.offsetLeft + el.offsetWidth / 2 - center);
+        if (d < distance) {
+          distance = d;
+          closest = el;
+        }
+      }
+      if (closest) setCurrent(closest.id);
+    }
+
+    function currentSectionId() {
+      return currentId || todaysId();
     }
 
     function setActiveNav(id) {
@@ -86,6 +171,7 @@
       const collapsibleTitles = new Set([
         'fill the gaps',
         'other progressions worth rotating',
+        'extras if you have time',
       ]);
 
       root.querySelectorAll('p').forEach((p) => {
@@ -110,20 +196,53 @@
       });
     }
 
-    async function init() {
+    // "**Name** · sets — how-to" list items: show name + sets, tuck the how-to away
+    function collapseExerciseDescriptions(root) {
+      const SEP = ' — ';
+
+      root.querySelectorAll('li').forEach((li) => {
+        const first = li.firstElementChild;
+        if (!first || first.tagName !== 'STRONG' || li.firstChild !== first) return;
+
+        const sepNode = [...li.childNodes].find(
+          (node) => node.nodeType === Node.TEXT_NODE && node.textContent.includes(SEP)
+        );
+        if (!sepNode) return;
+
+        const [before, ...after] = sepNode.textContent.split(SEP);
+        const summary = document.createElement('summary');
+        const body = document.createElement('div');
+        body.className = 'exercise-how';
+
+        let inBody = false;
+        for (const node of [...li.childNodes]) {
+          if (node === sepNode) {
+            summary.append(before);
+            body.append(after.join(SEP));
+            inBody = true;
+          } else {
+            (inBody ? body : summary).append(node);
+          }
+        }
+
+        const details = document.createElement('details');
+        details.className = 'exercise';
+        details.append(summary, body);
+        li.replaceChildren(details);
+      });
+    }
+
+    async function render(level, targetId) {
       const content = document.getElementById('content');
       const nav = document.getElementById('day-nav');
-      const todayBtn = document.getElementById('today-btn');
-
-      todayBtn.addEventListener('click', jumpToToday);
 
       let markdown;
       try {
-        const res = await fetch('README.md', { cache: 'no-cache' });
+        const res = await fetch(LEVELS[level].file, { cache: 'no-cache' });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         markdown = await res.text();
       } catch (err) {
-        content.innerHTML = `<p class="status">Couldn’t load README.md. Serve this folder over HTTP (npm run serve).</p>`;
+        content.innerHTML = `<p class="status">Couldn’t load ${LEVELS[level].file}. Serve this folder over HTTP (npm run serve).</p>`;
         console.error(err);
         return;
       }
@@ -140,8 +259,8 @@
       for (const chunk of chunks) {
         const title = sectionTitle(chunk);
         const id = slugify(title);
-        const short = SHORT_LABELS[title] || title;
         const isToday = id === today;
+        if (HIDDEN_SECTIONS.has(id)) continue;
 
         const article = document.createElement('article');
         article.className = `day${isToday ? ' is-today' : ''}`;
@@ -150,37 +269,126 @@
           ${isToday ? '<div class="day-label">Today</div>' : ''}
           ${marked.parse(chunk)}
         `;
+        collapseExerciseDescriptions(article);
         collapseOptionalSections(article);
         content.appendChild(article);
 
         const link = document.createElement('a');
         link.href = `#${id}`;
-        link.textContent = short;
+        link.setAttribute('aria-label', isToday ? `${title} (today)` : title);
+        link.title = title;
         if (isToday) link.classList.add('is-today-link');
         nav.appendChild(link);
       }
 
+      currentId = null;
+      const target = document.getElementById(targetId) || document.getElementById(today);
+      const first = target && target.classList.contains('day') ? target : content.querySelector('.day');
+      if (first) {
+        // Wait a tick so layout is ready
+        requestAnimationFrame(() => goToSlide(first.id, 'instant'));
+      }
+    }
+
+    function init() {
+      const nav = document.getElementById('day-nav');
+      const levelGroup = document.getElementById('level');
+      let level = initialLevel();
+
+      const levelButtons = Object.entries(LEVELS).map(([id, { label, icon }]) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.role = 'radio';
+        button.dataset.level = id;
+        button.title = label;
+        button.setAttribute('aria-label', label);
+        button.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">${icon}</svg>`;
+        return button;
+      });
+      levelGroup.replaceChildren(...levelButtons);
+
+      const syncLevel = () => {
+        levelButtons.forEach((button) => {
+          const checked = button.dataset.level === level;
+          button.setAttribute('aria-checked', String(checked));
+          button.tabIndex = checked ? 0 : -1;
+        });
+      };
+      syncLevel();
+
+      const setLevel = (next) => {
+        if (next === level) return;
+        level = next;
+        syncLevel();
+        saveLevel(level);
+        render(level, currentSectionId());
+      };
+
+      levelGroup.addEventListener('click', (event) => {
+        const button = event.target.closest('button');
+        if (button) setLevel(button.dataset.level);
+      });
+
+      // Radio-group keyboard behavior: arrows move the selection
+      levelGroup.addEventListener('keydown', (event) => {
+        if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+        event.preventDefault();
+        event.stopPropagation();
+        const ids = Object.keys(LEVELS);
+        const index = ids.indexOf(level) + (event.key === 'ArrowRight' ? 1 : -1);
+        const next = ids[Math.max(0, Math.min(ids.length - 1, index))];
+        setLevel(next);
+        levelButtons.find((button) => button.dataset.level === next).focus();
+      });
+
       nav.addEventListener('click', (event) => {
         const link = event.target.closest('a');
         if (!link) return;
-        const id = link.getAttribute('href').slice(1);
-        setActiveNav(id);
+        event.preventDefault();
+        goToSlide(link.getAttribute('href').slice(1));
       });
+
+      const content = document.getElementById('content');
+      let scrollFrame = null;
+      content.addEventListener('scroll', () => {
+        if (scrollFrame) return;
+        scrollFrame = requestAnimationFrame(() => {
+          scrollFrame = null;
+          syncCurrentFromScroll();
+        });
+      });
+
+      // Tapping a faded neighbor brings it to the center instead of opening things inside it
+      content.addEventListener(
+        'click',
+        (event) => {
+          const slide = event.target.closest('.day');
+          if (!slide || slide.classList.contains('is-current')) return;
+          event.preventDefault();
+          event.stopPropagation();
+          goToSlide(slide.id);
+        },
+        true
+      );
+
+      document.getElementById('prev-btn').addEventListener('click', () => stepSlide(-1));
+      document.getElementById('next-btn').addEventListener('click', () => stepSlide(1));
+
+      document.addEventListener('keydown', (event) => {
+        if (event.target.closest('input, textarea')) return;
+        if (event.key === 'ArrowLeft') stepSlide(-1);
+        if (event.key === 'ArrowRight') stepSlide(1);
+      });
+
+      window.addEventListener('resize', () => currentId && goToSlide(currentId, 'instant'));
+      window.addEventListener('hashchange', () => goToSlide(location.hash.slice(1)));
 
       const initialId =
         location.hash && location.hash.length > 1
           ? location.hash.slice(1)
-          : today;
+          : todaysId();
 
-      const target = document.getElementById(initialId) || document.getElementById(today);
-      if (target) {
-        setActiveNav(target.id);
-        // Wait a tick so layout is ready
-        requestAnimationFrame(() => {
-          target.scrollIntoView({ behavior: 'instant', block: 'start' });
-          if (!location.hash) history.replaceState(null, '', `#${target.id}`);
-        });
-      }
+      render(level, initialId);
     }
 
     init();
