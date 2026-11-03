@@ -51,6 +51,8 @@
 
 ### Calisthenics Progressions — Levers & Midline
 
+📄 **Reference:** [The 6 "Holy Grail" Exercises (PDF)](The_6_Exercises.pdf)
+
 Offset day. Bias **pulling-line skill** and core so you don't compete with Wednesday's horizontal push.
 
 **Primary candidates**
@@ -92,6 +94,8 @@ Offset day. Bias **pulling-line skill** and core so you don't compete with Wedne
 ## Thursday
 
 ### Calisthenics Progressions — Handstand & Control
+
+📄 **Reference:** [The 6 "Holy Grail" Exercises (PDF)](The_6_Exercises.pdf)
 
 Offset day. Bias **balance, inversion, and mobility** so Friday's pull/squat stays fresh.
 
