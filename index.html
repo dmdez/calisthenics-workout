@@ -17,7 +17,6 @@
   <header class="site-header">
     <div class="nav-inner">
       <nav class="day-nav" id="day-nav" aria-label="Workout days"></nav>
-      <div class="level" id="level" role="radiogroup" aria-label="Level"></div>
     </div>
   </header>
 
@@ -33,15 +32,8 @@
     // README sections that are for GitHub only, not the app
     const HIDDEN_SECTIONS = new Set(['calisthenics-workout', 'week-at-a-glance']);
 
-    const DAY_IDS = [
-      'weekend', // Sunday
-      'monday',
-      'tuesday',
-      'wednesday',
-      'thursday',
-      'friday',
-      'weekend', // Saturday
-    ];
+    const DAY_IDS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+    const PLAN_FILE = 'README.md';
 
     function slugify(text) {
       return text
@@ -57,42 +49,6 @@
       const html = markdown.match(/<h1[^>]*>(.*?)<\/h1>/i);
       if (html) return html[1].replace(/<[^>]+>/g, '').trim();
       return 'Section';
-    }
-
-    // Easiest first — order of the segmented control
-    // Icons from Lucide (ISC license): feather = light, dumbbell = loaded
-    const LEVELS = {
-      beginner: {
-        label: 'Beginner',
-        file: 'BEGINNER.md',
-        icon: '<path d="M12.67 19a2 2 0 0 0 1.416-.588l6.154-6.172a6 6 0 0 0-8.49-8.49L5.586 9.914A2 2 0 0 0 5 11.328V18a1 1 0 0 0 1 1z"/><path d="M16 8 2 22"/><path d="M17.5 15H9"/>',
-      },
-      standard: {
-        label: 'Standard',
-        file: 'README.md',
-        icon: '<path d="M17.596 12.768a2 2 0 1 0 2.829-2.829l-1.768-1.767a2 2 0 0 0 2.828-2.829l-2.828-2.828a2 2 0 0 0-2.829 2.828l-1.767-1.768a2 2 0 1 0-2.829 2.829z"/><path d="m2.5 21.5 1.4-1.4"/><path d="m20.1 3.9 1.4-1.4"/><path d="M5.343 21.485a2 2 0 1 0 2.829-2.828l1.767 1.768a2 2 0 1 0 2.829-2.829l-6.364-6.364a2 2 0 1 0-2.829 2.829l1.768 1.767a2 2 0 0 0-2.828 2.829z"/><path d="m9.6 14.4 4.8-4.8"/>',
-      },
-    };
-    const LEVEL_KEY = 'workout-level';
-
-    function initialLevel() {
-      const param = new URLSearchParams(location.search).get('level');
-      if (param in LEVELS) return param;
-      try {
-        const saved = localStorage.getItem(LEVEL_KEY);
-        if (saved in LEVELS) return saved;
-      } catch {}
-      return 'standard';
-    }
-
-    function saveLevel(level) {
-      try {
-        localStorage.setItem(LEVEL_KEY, level);
-      } catch {}
-      const url = new URL(location.href);
-      if (level === 'standard') url.searchParams.delete('level');
-      else url.searchParams.set('level', level);
-      history.replaceState(null, '', url);
     }
 
     function todaysId() {
@@ -157,92 +113,127 @@
       if (closest) setCurrent(closest.id);
     }
 
-    function currentSectionId() {
-      return currentId || todaysId();
-    }
-
     function setActiveNav(id) {
       document.querySelectorAll('.day-nav a').forEach((link) => {
         link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`);
       });
     }
 
-    function collapseOptionalSections(root) {
-      const collapsibleTitles = new Set([
-        'fill the gaps',
-        'other progressions worth rotating',
-        'extras if you have time',
-      ]);
-
-      root.querySelectorAll('p').forEach((p) => {
-        const strong = p.querySelector(':scope > strong');
-        if (!strong) return;
-
-        const title = strong.textContent.trim();
-        if (!collapsibleTitles.has(title.toLowerCase())) return;
-
-        const list = p.nextElementSibling;
-        if (!list || list.tagName !== 'UL') return;
-
-        const details = document.createElement('details');
-        details.className = 'fill-gaps';
-
-        const summary = document.createElement('summary');
-        summary.textContent = title;
-
-        details.appendChild(summary);
-        details.appendChild(list);
-        p.replaceWith(details);
-      });
+    function el(tag, className, text) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text != null) node.textContent = text;
+      return node;
     }
 
-    // "**Name** · sets — how-to" list items: show name + sets, tuck the how-to away
-    function collapseExerciseDescriptions(root) {
-      const SEP = ' — ';
+    // "**Name** · sets — how-to" → { name, sets, how }
+    function parseItem(li) {
+      const strong = li.querySelector('strong');
+      const name = strong ? strong.textContent.trim() : li.textContent.trim();
+      const rest = strong ? li.textContent.slice(li.textContent.indexOf(name) + name.length) : '';
+      const [meta, ...how] = rest.split(' — ');
+      return {
+        name,
+        sets: meta.replace(/^\s*·\s*/, '').trim(),
+        how: how.join(' — ').trim(),
+      };
+    }
 
-      root.querySelectorAll('li').forEach((li) => {
-        const first = li.firstElementChild;
-        if (!first || first.tagName !== 'STRONG' || li.firstChild !== first) return;
+    // Turn a rendered day section into a glanceable card:
+    // icon, movement, sets × reps up top; how-to and options tucked into one toggle
+    function buildCard(article, isToday) {
+      const heading = article.querySelector('h2');
+      const sub = article.querySelector('h3');
+      const icon = article.querySelector('img');
+      const [focus, move] = (sub ? sub.textContent : '').split(' — ').map((t) => t?.trim());
 
-        const sepNode = [...li.childNodes].find(
-          (node) => node.nodeType === Node.TEXT_NODE && node.textContent.includes(SEP)
-        );
-        if (!sepNode) return;
-
-        const [before, ...after] = sepNode.textContent.split(SEP);
-        const summary = document.createElement('summary');
-        const body = document.createElement('div');
-        body.className = 'exercise-how';
-
-        let inBody = false;
-        for (const node of [...li.childNodes]) {
-          if (node === sepNode) {
-            summary.append(before);
-            body.append(after.join(SEP));
-            inBody = true;
-          } else {
-            (inBody ? body : summary).append(node);
-          }
+      // Group "**Label**" paragraphs with the list that follows them
+      const isLabel = (node) =>
+        node.tagName === 'P' &&
+        node.firstElementChild?.tagName === 'STRONG' &&
+        node.textContent.trim() === node.firstElementChild.textContent.trim();
+      const groups = {};
+      const lists = [];
+      const extras = [];
+      const nodes = [...article.children];
+      for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i];
+        if (node === heading || node === sub || node.contains(icon)) continue;
+        if (isLabel(node) && nodes[i + 1]?.tagName === 'UL') {
+          groups[node.textContent.trim().toLowerCase()] = [...nodes[++i].children];
+        } else if (node.tagName === 'UL') {
+          lists.push(node);
+        } else {
+          extras.push(node);
         }
+      }
 
-        const details = document.createElement('details');
-        details.className = 'exercise';
-        details.append(summary, body);
-        li.replaceChildren(details);
-      });
+      const main = groups['main movement']?.[0] && parseItem(groups['main movement'][0]);
+      const finishers = (groups['finisher'] || groups['finishers'] || []).map(parseItem);
+      const options = groups['easier / harder'] || [];
+
+      const card = el('div', 'card');
+      if (isToday) card.append(el('div', 'day-label', 'Today'));
+      card.append(el('p', 'card-day', heading?.textContent.trim()));
+      if (focus) card.append(el('p', 'card-focus', focus));
+      if (icon) {
+        icon.className = 'card-icon';
+        card.append(icon);
+      }
+      card.append(el('h2', 'card-move', main ? main.name : move || focus));
+      if (main?.sets) card.append(el('p', 'card-sets', main.sets));
+
+      if (finishers.length) {
+        const list = el('ul', 'card-finishers');
+        for (const f of finishers) {
+          const li = el('li');
+          li.append(el('span', 'card-then', 'then'), el('strong', null, f.name));
+          if (f.sets) li.append(el('span', 'card-finisher-sets', f.sets));
+          list.append(li);
+        }
+        card.append(list);
+      }
+
+      // Days without a main movement (recovery) show their list right on the card
+      for (const list of lists) {
+        list.className = 'card-list';
+        card.append(list);
+      }
+
+      const more = el('details', 'card-more');
+      more.append(el('summary', null, main ? 'How to' : 'Details'));
+      const body = el('div', 'card-more-body');
+      for (const item of [main, ...finishers].filter((i) => i?.how)) {
+        const p = el('p');
+        p.append(el('strong', null, item.name), ` — ${item.how}`);
+        body.append(p);
+      }
+      if (options.length) {
+        const ul = el('ul');
+        ul.append(...options);
+        body.append(ul);
+      }
+      // Anything else (e.g. Sunday's list, tips) keeps its markdown rendering
+      body.append(...extras);
+      if (body.children.length) {
+        more.append(body);
+        card.append(more);
+      }
+
+      article.replaceChildren(card);
     }
 
-    async function render(level, targetId) {
+    async function render(targetId) {
       const content = document.getElementById('content');
       const nav = document.getElementById('day-nav');
 
       let markdown;
       try {
-        const res = await fetch(LEVELS[level].file, { cache: 'no-cache' });
+        const res = await fetch(PLAN_FILE, { cache: 'no-cache' });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         markdown = await res.text();
       } catch (err) {
-        content.innerHTML = `<p class="status">Couldn’t load ${LEVELS[level].file}. Serve this folder over HTTP (npm run serve).</p>`;
+        content.innerHTML = `<p class="status">Couldn’t load ${PLAN_FILE}. Serve this folder over HTTP (npm run serve).</p>`;
         console.error(err);
         return;
       }
@@ -265,12 +256,8 @@
         const article = document.createElement('article');
         article.className = `day${isToday ? ' is-today' : ''}`;
         article.id = id;
-        article.innerHTML = `
-          ${isToday ? '<div class="day-label">Today</div>' : ''}
-          ${marked.parse(chunk)}
-        `;
-        collapseExerciseDescriptions(article);
-        collapseOptionalSections(article);
+        article.innerHTML = marked.parse(chunk);
+        buildCard(article, isToday);
         content.appendChild(article);
 
         const link = document.createElement('a');
@@ -292,55 +279,6 @@
 
     function init() {
       const nav = document.getElementById('day-nav');
-      const levelGroup = document.getElementById('level');
-      let level = initialLevel();
-
-      const levelButtons = Object.entries(LEVELS).map(([id, { label, icon }]) => {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.role = 'radio';
-        button.dataset.level = id;
-        button.title = label;
-        button.setAttribute('aria-label', label);
-        button.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">${icon}</svg>`;
-        return button;
-      });
-      levelGroup.replaceChildren(...levelButtons);
-
-      const syncLevel = () => {
-        levelButtons.forEach((button) => {
-          const checked = button.dataset.level === level;
-          button.setAttribute('aria-checked', String(checked));
-          button.tabIndex = checked ? 0 : -1;
-        });
-      };
-      syncLevel();
-
-      const setLevel = (next) => {
-        if (next === level) return;
-        level = next;
-        syncLevel();
-        saveLevel(level);
-        render(level, currentSectionId());
-      };
-
-      levelGroup.addEventListener('click', (event) => {
-        const button = event.target.closest('button');
-        if (button) setLevel(button.dataset.level);
-      });
-
-      // Radio-group keyboard behavior: arrows move the selection
-      levelGroup.addEventListener('keydown', (event) => {
-        if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
-        event.preventDefault();
-        event.stopPropagation();
-        const ids = Object.keys(LEVELS);
-        const index = ids.indexOf(level) + (event.key === 'ArrowRight' ? 1 : -1);
-        const next = ids[Math.max(0, Math.min(ids.length - 1, index))];
-        setLevel(next);
-        levelButtons.find((button) => button.dataset.level === next).focus();
-      });
-
       nav.addEventListener('click', (event) => {
         const link = event.target.closest('a');
         if (!link) return;
@@ -388,7 +326,7 @@
           ? location.hash.slice(1)
           : todaysId();
 
-      render(level, initialId);
+      render(initialId);
     }
 
     init();

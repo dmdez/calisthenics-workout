@@ -59,7 +59,7 @@ a {
   margin: 0 auto;
   padding: 0.35rem var(--space);
   display: grid;
-  grid-template-columns: auto 1fr; /* phone: dots left, level control right */
+  grid-template-columns: auto 1fr; /* phone: dots left */
   align-items: center;
   gap: 0.5rem;
   min-height: var(--nav-height);
@@ -256,51 +256,6 @@ main::-webkit-scrollbar {
   text-align: center;
 }
 
-.day .fill-gaps {
-  margin: 0 0 0.9rem;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--bg);
-  padding: 0.15rem 0.75rem 0.15rem;
-}
-
-.day .fill-gaps[open] {
-  padding-bottom: 0.55rem;
-}
-
-.day .fill-gaps summary {
-  cursor: pointer;
-  list-style: none;
-  font-weight: 700;
-  color: var(--accent);
-  padding: 0.55rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  user-select: none;
-}
-
-.day .fill-gaps summary::-webkit-details-marker {
-  display: none;
-}
-
-.day .fill-gaps summary::before {
-  content: "+";
-  flex: 0 0 0.8rem;
-  font-size: 1.1rem;
-  line-height: 1;
-  color: var(--text-muted);
-}
-
-.day .fill-gaps[open] summary::before {
-  content: "–";
-}
-
-.day .fill-gaps ul {
-  margin: 0;
-  padding-left: 1.2rem;
-}
-
 .day table {
   width: 100%;
   border-collapse: collapse;
@@ -341,88 +296,140 @@ main::-webkit-scrollbar {
   }
 }
 
-/* Level: segmented control, active option filled */
-.level {
-  justify-self: end;
+/* Day card: glanceable at the top, details on demand */
+.card {
   display: flex;
-  padding: 3px;
-  border-radius: 999px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-}
-
-.level button {
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  border: none;
+  text-align: center;
+  gap: 0.15rem;
+}
+
+.card .day-label {
+  margin-bottom: 0.25rem;
+  padding: 0.15rem 0.6rem;
   border-radius: 999px;
-  padding: 0.3rem 0.6rem;
-  font: inherit;
+  background: var(--accent);
+  color: #fff;
+}
+
+.card-day {
+  margin: 0;
   font-size: 0.8rem;
-  font-weight: 600;
-  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--text-muted);
-  background: transparent;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
 }
 
-.level svg {
-  flex: 0 0 auto;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-
-.level button:hover {
+.day .card-focus {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
   color: var(--accent);
 }
 
-.level button[aria-checked="true"] {
-  color: #fff;
-  background: var(--accent);
-  box-shadow: 0 1px 2px rgba(26, 34, 44, 0.15);
+.day .card-icon {
+  width: min(42vw, 9.5rem);
+  height: auto;
+  margin: 0.6rem auto 0.4rem;
 }
 
-.day li:has(> .exercise) {
-  list-style: none;
-  margin-left: -1.2rem;
+.day .card-move {
+  margin: 0;
+  font-size: clamp(1.4rem, 5.5vw, 1.9rem);
+  line-height: 1.15;
 }
 
-.day .exercise summary {
-  cursor: pointer;
-  list-style: none;
-  display: flex;
-  align-items: baseline;
-  gap: 0.4rem;
-  user-select: none;
-}
-
-.day .exercise summary::-webkit-details-marker {
-  display: none;
-}
-
-.day .exercise summary::before {
-  content: "›";
-  flex: 0 0 0.8rem;
+.day .card-sets {
+  margin: 0.5rem 0 0.25rem;
+  font-size: clamp(2.4rem, 11vw, 3.4rem);
   font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+
+.day .card-finishers,
+.day .card-list {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.card-finishers li,
+.card-list li {
+  margin: 0;
+  padding: 0.55rem 0.85rem;
+  border-radius: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.2rem 0.5rem;
+}
+
+.card-then {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--text-muted);
-  transition: transform 0.15s ease;
 }
 
-.day .exercise[open] summary::before {
-  transform: rotate(90deg);
-}
-
-.day .exercise summary strong {
+.day .card-finishers strong {
   color: var(--text);
 }
 
-.day .exercise-how {
-  margin: 0.25rem 0 0.5rem 1.2rem;
-  font-size: 0.92rem;
+.card-finisher-sets {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.card-more {
+  width: 100%;
+  margin-top: 0.9rem;
+  text-align: left;
+}
+
+.card-more summary {
+  cursor: pointer;
+  list-style: none;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--text-muted);
+  border: 1px solid var(--border);
+  user-select: none;
+}
+
+.card-more summary::-webkit-details-marker {
+  display: none;
+}
+
+.card-more summary::after {
+  content: " ▾";
+}
+
+.card-more[open] summary::after {
+  content: " ▴";
+}
+
+.card-more-body {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.card-more-body ul {
+  padding-left: 1.2rem;
 }
